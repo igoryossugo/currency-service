@@ -1,20 +1,21 @@
-from django.conf import settings
+from decimal import Decimal
+
 from ramos.mixins import SingletonCreateMixin
 
 from currency_service.backends.cotation.backend import CotationBackend
-from currency_service.currency.models import Currency
+from currency_service.backends.cotation.constants import (
+    DEFAULT_LOCAL_CURRENCY_ID
+)
+from currency_service.backends.cotation.models import Cotation
 
 
 class FakeCotationBackend(SingletonCreateMixin, CotationBackend):
     id = 'fake'
     name = 'Fake'
 
-    def get(self, currency, currency_id):
-        return Currency(id=currency_id, value=currency.value)
-
-    def list(self, currency, currency_ids=None):
-        currency_ids = currency_ids or settings.DEFAULT_CURRENCY_IDS
-        return [
-            Currency(id=currency_id, value=currency.value)
-            for currency_id in currency_ids
-        ]
+    def get(self, target_currency, source_currency=DEFAULT_LOCAL_CURRENCY_ID):
+        return Cotation(
+            value=Decimal('5.72'),
+            source_currency=source_currency,
+            target_currency=target_currency,
+        )
