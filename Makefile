@@ -1,13 +1,13 @@
 PORT ?= 8080
-TEST_SETTINGS ?= currency.settings.test
-DEV_SETTINGS ?= currency.settings.development
-SANDBOX_SETTINGS ?= currency.settings.sandbox
-PRODUCTION_SETTINGS ?= currency.settings.production
+TEST_SETTINGS ?= currency_service.settings.test
+DEV_SETTINGS ?= currency_service.settings.development
+SANDBOX_SETTINGS ?= currency_service.settings.sandbox
+PRODUCTION_SETTINGS ?= currency_service.settings.production
 
 MANAGE_PY = django/manage.py
 
 test:
-	@pytest django/currency
+	@pytest django/currency_service
 
 migrate-dev:
 	@python $(MANAGE_PY) migrate --settings=$(DEV_SETTINGS)
