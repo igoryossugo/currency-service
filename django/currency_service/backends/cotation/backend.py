@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
 
-class ConverterBackend:
+class CotationBackend:
     id = None
     name = None
