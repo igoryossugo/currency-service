@@ -109,7 +109,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-DEFAULT_CURRENCY_IDS = ['BRL', 'USD', 'EUR', 'INR']
+DEFAULT_CURRENCY_IDS = ['BRL', 'USD', 'EUR', 'CAD']
 
 POOL_OF_RAMOS = {
     'cotation': [
@@ -118,3 +118,5 @@ POOL_OF_RAMOS = {
 }
 
 DEFAULT_COTATION_BACKEND = 'fake'
+
+BACEN_WSDL_BASE_URL = 'https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl'  # noqa

@@ -6,3 +6,4 @@ class CurrencyID(Enum):
     USD = 'USD'
     EUR = 'EUR'
     INR = 'INR'
+    CAD = 'CAD'
