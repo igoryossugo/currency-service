@@ -32,7 +32,7 @@ class TestBacenCotationBackend:
         mocked_http_client
     ):
         with mocked_http_client:
-            cotation = backend.get(target_currency=CurrencyID.USD.value)
+            cotation = backend._get(target_currency=CurrencyID.USD.value)
 
         assert isinstance(cotation, Cotation)
         assert cotation.target_currency == CurrencyID.USD.value
@@ -43,7 +43,7 @@ class TestBacenCotationBackend:
         mocked_http_client
     ):
         with mocked_http_client as mocked_client:
-            backend.get(target_currency=CurrencyID.USD.value)
+            backend._get(target_currency=CurrencyID.USD.value)
 
         mocked_client.assert_called_with(
             bacen_currency_id=get_bacen_currency_id(CurrencyID.USD.value)
@@ -55,7 +55,7 @@ class TestBacenCotationBackend:
         mocked_http_client
     ):
         with mocked_http_client as mocked_client:
-            backend.get(
+            backend._get(
                 target_currency=CurrencyID.USD.value,
                 source_currency=CurrencyID.EUR.value
             )
@@ -70,7 +70,7 @@ class TestBacenCotationBackend:
         with mocked_http_client, mock.patch(
             'currency_service.extensions.bacen.backend.get_bacen_currency_id'
         ) as mocked_helper:
-            backend.get(target_currency=CurrencyID.USD.value)
+            backend._get(target_currency=CurrencyID.USD.value)
 
         mocked_helper.assert_called_with(currency_id=CurrencyID.USD.value)
 
@@ -84,7 +84,7 @@ class TestBacenCotationBackend:
             'currency_service.extensions.bacen.backend.'
             'build_cotation_by_bacen_response'
         ) as mocked_helper:
-            backend.get(target_currency=CurrencyID.USD.value)
+            backend._get(target_currency=CurrencyID.USD.value)
 
         mocked_helper.assert_called_with(
             target_currency=CurrencyID.USD.value,
@@ -103,7 +103,7 @@ class TestBacenCotationBackend:
             'currency_service.extensions.bacen.backend.'
             'build_cotation_by_bacen_response'
         ) as mocked_helper:
-            backend.get(
+            backend._get(
                 target_currency=CurrencyID.USD.value,
                 source_currency=CurrencyID.EUR.value
             )
