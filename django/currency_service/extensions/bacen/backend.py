@@ -20,7 +20,7 @@ class BacenCotationBackend(SingletonCreateMixin, CotationBackend):
     id = 'bacen'
     name = 'Banco central do Brasil'
 
-    def get(self, target_currency, source_currency=DEFAULT_LOCAL_CURRENCY_ID):
+    def _get(self, target_currency, source_currency=DEFAULT_LOCAL_CURRENCY_ID):
         response_target_cotation, response_source_cotation = None, None
         http_client = BacenHTTPClient()
 
