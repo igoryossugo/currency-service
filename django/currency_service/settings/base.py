@@ -136,12 +136,16 @@ STATIC_URL = '/static/'
 DEFAULT_CURRENCY_IDS = ['BRL', 'USD', 'EUR', 'CAD']
 
 POOL_OF_RAMOS = {
+    'catalog': [
+        constants.FAKE_CATALOG_BACKEND,
+    ],
     'cotation': [
         constants.FAKE_COTATION_BACKEND,
         constants.BACEN_COTATION_BACKEND,
-    ]
+    ],
 }
 
+DEFAULT_CATALOG_BACKEND = 'fake'
 DEFAULT_COTATION_BACKEND = 'fake'
 
 BACEN_WSDL_BASE_URL = 'https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl'  # noqa
