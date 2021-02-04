@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'currency_service.wsgi.application'
+
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }
 
 
 # Database
@@ -114,6 +123,7 @@ DEFAULT_CURRENCY_IDS = ['BRL', 'USD', 'EUR', 'CAD']
 POOL_OF_RAMOS = {
     'cotation': [
         constants.FAKE_COTATION_BACKEND,
+        constants.BACEN_COTATION_BACKEND,
     ]
 }
 
