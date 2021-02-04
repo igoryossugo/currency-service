@@ -21,37 +21,20 @@ class BacenCotationBackend(SingletonCreateMixin, CotationBackend):
     name = 'Banco central do Brasil'
 
     def get(self, target_currency, source_currency=DEFAULT_LOCAL_CURRENCY_ID):
-        bacen_source_currency_id = get_bacen_currency_id(
-            currency_id=target_currency
-        )
-
+        response_target_cotation, response_source_cotation = None, None
         http_client = BacenHTTPClient()
-        try:
-            response_target_cotation = http_client.get_cotation(
-                bacen_currency_id=bacen_source_currency_id
-            )
-        except Exception as e:
-            logger.error(
-                'Error to get bacen cotation with '
-                f'currency_id: {target_currency}. Error: {e}'
-            )
-            raise BacenServerError(e)
 
-        response_source_cotation = None
-        if source_currency != DEFAULT_LOCAL_CURRENCY_ID:
-            bacen_target_currency_id = get_bacen_currency_id(
-                currency_id=source_currency
+        if target_currency != DEFAULT_LOCAL_CURRENCY_ID:
+            response_target_cotation = self._get_bacen_cotation(
+                http_client=http_client,
+                currency_id=target_currency
             )
-            try:
-                response_source_cotation = http_client.get_cotation(
-                    bacen_currency_id=bacen_target_currency_id
-                )
-            except Exception as e:
-                logger.error(
-                    'Error to get bacen cotation with different local '
-                    f'currency_id. currency_id: {source_currency}. Error: {e}'
-                )
-                raise BacenServerError(e)
+
+        if source_currency != DEFAULT_LOCAL_CURRENCY_ID:
+            response_source_cotation = self._get_bacen_cotation(
+                http_client=http_client,
+                currency_id=target_currency
+            )
 
         return build_cotation_by_bacen_response(
             target_currency=target_currency,
@@ -59,3 +42,16 @@ class BacenCotationBackend(SingletonCreateMixin, CotationBackend):
             response_target_cotation=response_target_cotation,
             response_source_cotation=response_source_cotation,
         )
+
+    def _get_bacen_cotation(self, http_client, currency_id):
+        bacen_currency_id = get_bacen_currency_id(currency_id=currency_id)
+        try:
+            return http_client.get_cotation(
+                bacen_currency_id=bacen_currency_id
+            )
+        except Exception as e:
+            logger.error(
+                'Error to get bacen cotation with '
+                f'currency_id: {bacen_currency_id}. Error: {e}'
+            )
+            raise BacenServerError(e)
