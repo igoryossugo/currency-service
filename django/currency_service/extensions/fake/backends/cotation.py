@@ -13,7 +13,7 @@ class FakeCotationBackend(SingletonCreateMixin, CotationBackend):
     id = 'fake'
     name = 'Fake'
 
-    def get(self, target_currency, source_currency=DEFAULT_LOCAL_CURRENCY_ID):
+    def _get(self, target_currency, source_currency=DEFAULT_LOCAL_CURRENCY_ID):
         return Cotation(
             value=Decimal('5.72'),
             source_currency=source_currency,

@@ -66,6 +66,22 @@ REST_FRAMEWORK = {
     ]
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'currency-service-cache',
+        'KEY_PREFIX': 'default',
+    },
+    'cotation': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'currency-service-cache',
+        'KEY_PREFIX': 'cotation',
+    },
+}
+
+CACHE_LIFETIME = {
+    'cotation': 12 * constants.HOURS,
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
