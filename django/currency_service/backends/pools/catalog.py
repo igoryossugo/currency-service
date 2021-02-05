@@ -2,7 +2,7 @@ from ramos.mixins import DefaultBackendMixin
 from ramos.pool import BackendPool
 
 
-class CotationBackendPool(DefaultBackendMixin, BackendPool):
+class CatalogBackendPool(DefaultBackendMixin, BackendPool):
     """
     A pool of catalog backends, for generic backends.
     For more informations of ramos: https://github.com/luizalabs/ramos

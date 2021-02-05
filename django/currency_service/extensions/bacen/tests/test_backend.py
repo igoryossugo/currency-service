@@ -2,10 +2,8 @@ from unittest import mock
 
 import pytest
 
-from currency_service.backends.cotation.constants import (
-    DEFAULT_LOCAL_CURRENCY_ID
-)
 from currency_service.backends.cotation.models import Cotation
+from currency_service.currency.constants import DEFAULT_LOCAL_CURRENCY_ID
 from currency_service.currency.enums import CurrencyID
 from currency_service.extensions.bacen.backend import BacenCotationBackend
 from currency_service.extensions.bacen.helpers import get_bacen_currency_id

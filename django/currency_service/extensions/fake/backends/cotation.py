@@ -3,10 +3,8 @@ from decimal import Decimal
 from ramos.mixins import SingletonCreateMixin
 
 from currency_service.backends.cotation.backend import CotationBackend
-from currency_service.backends.cotation.constants import (
-    DEFAULT_LOCAL_CURRENCY_ID
-)
 from currency_service.backends.cotation.models import Cotation
+from currency_service.currency.constants import DEFAULT_LOCAL_CURRENCY_ID
 
 
 class FakeCotationBackend(SingletonCreateMixin, CotationBackend):

@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from decimal import Decimal
 
+from django.conf import settings
+
 from currency_service.backends.pools.cotation import CotationBackendPool
 from currency_service.currency.enums import CurrencyID
 from currency_service.models import BaseModel
@@ -22,3 +24,13 @@ class Currency(BaseModel):
         )
         self.id = id
         self.value = self.value / cotation.value
+
+    @classmethod
+    def converter_list(cls, id: CurrencyID, value: Decimal):
+        currencies = []
+        for currency_id in settings.DEFAULT_CONVERTER_CURRENCY_IDS:
+            currency = cls(id=id, value=value)
+            currency.converter(id=currency_id)
+            currencies.append(currency)
+
+        return currencies
