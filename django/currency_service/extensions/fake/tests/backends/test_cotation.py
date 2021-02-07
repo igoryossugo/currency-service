@@ -3,8 +3,7 @@ import pytest
 from currency_service.backends.cotation.models import Cotation
 from currency_service.currency.enums import CurrencyID
 from currency_service.extensions.fake.backends.cotation import (
-    FakeCotationBackend
-)
+    FakeCotationBackend)
 
 
 class TestFakeCotationBackend:

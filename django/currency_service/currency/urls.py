@@ -1,10 +1,9 @@
-from django.conf.urls import url
-
 from currency_service.currency import views
+from django.conf.urls import url
 
 urlpatterns = [
     url(
-        r'^(?P<currency_id>[\w_-]+)/$',
+        r'^(?P<currency_id>[\w_-]+)/convert/$',
         views.ConvertList.as_view(),
         name='currency_convert_list'
     ),

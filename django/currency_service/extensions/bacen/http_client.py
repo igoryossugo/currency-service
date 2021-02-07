@@ -1,8 +1,9 @@
 import logging
 from typing import Dict
 
-from django.conf import settings
 from zeep import Client
+
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 

@@ -6,9 +6,7 @@ from currency_service.backends.cotation.backend import CotationBackend
 from currency_service.currency.constants import DEFAULT_LOCAL_CURRENCY_ID
 from currency_service.extensions.bacen.exceptions import BacenServerError
 from currency_service.extensions.bacen.helpers import (
-    build_cotation_by_bacen_response,
-    get_bacen_currency_id
-)
+    build_cotation_by_bacen_response, get_bacen_currency_id)
 from currency_service.extensions.bacen.http_client import BacenHTTPClient
 
 logger = logging.getLogger(__name__)

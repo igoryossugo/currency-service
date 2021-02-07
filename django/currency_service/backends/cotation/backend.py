@@ -1,13 +1,10 @@
 from abc import abstractmethod
 
+from currency_service.backends.cotation.models import Cotation
+from currency_service.currency.constants import DEFAULT_LOCAL_CURRENCY_ID
+from currency_service.currency.enums import CurrencyID
 from django.conf import settings
 from django.core.cache import caches
-
-from currency_service.currency.constants import (
-    DEFAULT_LOCAL_CURRENCY_ID
-)
-from currency_service.backends.cotation.models import Cotation
-from currency_service.currency.enums import CurrencyID
 
 cache = caches['cotation']
 
@@ -38,5 +35,5 @@ class CotationBackend:
         self,
         target_currency: CurrencyID,
         source_currency: CurrencyID = DEFAULT_LOCAL_CURRENCY_ID,
-    ) -> Cotation:
+    ) -> Cotation:  # pragma: no cover
         pass

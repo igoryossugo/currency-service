@@ -9,6 +9,10 @@ MANAGE_PY = django/manage.py
 test:
 	@pytest django/currency_service
 
+check:
+	@flake8 django/
+	@isort --check
+
 migrate-dev:
 	@python $(MANAGE_PY) migrate --settings=$(DEV_SETTINGS)
 

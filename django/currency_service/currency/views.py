@@ -3,10 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from currency_service.currency.models import Currency
-from currency_service.currency.serializers import (
-    CurrencySerializer,
-    CurrencyValueSerializer
-)
+from currency_service.currency.serializers import (CurrencySerializer,
+                                                   CurrencyValueSerializer)
 
 
 class Convert(APIView):

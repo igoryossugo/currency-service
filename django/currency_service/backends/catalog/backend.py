@@ -8,5 +8,9 @@ class CatalogBackend:
     name = None
 
     @abstractmethod
-    def get_product(self, sku: str, seller: str) -> Product:
+    def get_product(
+        self,
+        sku: str,
+        seller: str
+    ) -> Product:  # pragma: no cover
         pass
