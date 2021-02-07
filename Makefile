@@ -16,6 +16,9 @@ check:
 requirements-dev:
 	@pip install -r requirements/development.txt
 
+createsuperuser:
+	@python django/manage.py createsuperuser --settings=$(DEV_SETTINGS)
+
 migrate-dev:
 	@python $(MANAGE_PY) migrate --settings=$(DEV_SETTINGS)
 
