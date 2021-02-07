@@ -1,6 +1,8 @@
 from decimal import Decimal
 from unittest import mock
 
+from django.conf import settings
+
 from currency_service.backends.cotation.models import Cotation
 from currency_service.currency.enums import CurrencyID
 from currency_service.currency.models import Currency
@@ -52,3 +54,9 @@ class TestCurrency:
             currency.convert(id=CurrencyID.USD.value)
 
         assert not mocked_backend.called
+
+    def test_list_should_return_list_of_currency_by_registered_config(self):
+        currencies = Currency.convert_list(id='BRL', value=Decimal('10.00'))
+        for currency in currencies:
+            assert isinstance(currency, Currency)
+            assert currency.id in settings.REGISTERED_CURRENCY_IDS

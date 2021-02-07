@@ -28,7 +28,7 @@ class Currency(BaseModel):
     @classmethod
     def convert_list(cls, id: CurrencyID, value: Decimal):
         currencies = []
-        for currency_id in settings.DEFAULT_CONVERT_CURRENCY_IDS:
+        for currency_id in settings.REGISTERED_CURRENCY_IDS:
             currency = cls(id=id, value=value)
             currency.convert(id=currency_id)
             currencies.append(currency)
