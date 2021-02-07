@@ -1,10 +1,11 @@
 from decimal import Decimal
 from unittest import mock
 
+from django.conf import settings
+
 from currency_service.backends.cotation.models import Cotation
 from currency_service.currency.enums import CurrencyID
 from currency_service.currency.models import Currency
-from django.conf import settings
 
 
 class TestCurrency:

@@ -13,6 +13,9 @@ check:
 	@flake8 django/
 	@isort --check django/
 
+requirements-dev:
+	@pip install -r requirements/development.txt
+
 migrate-dev:
 	@python $(MANAGE_PY) migrate --settings=$(DEV_SETTINGS)
 

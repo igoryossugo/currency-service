@@ -1,5 +1,6 @@
-from currency_service.product import views
 from django.conf.urls import url
+
+from currency_service.product import views
 
 urlpatterns = [
     url(

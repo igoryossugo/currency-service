@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 from decimal import Decimal
 
+from django.conf import settings
+
 from currency_service.backends.pools.cotation import CotationBackendPool
 from currency_service.currency.enums import CurrencyID
 from currency_service.models import BaseModel
-from django.conf import settings
 
 
 @dataclass
