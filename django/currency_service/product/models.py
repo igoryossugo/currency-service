@@ -12,7 +12,7 @@ class Product:
     price: Decimal
 
     def list_currencies(self):
-        return Currency.converter_list(
+        return Currency.convert_list(
             id=DEFAULT_LOCAL_CURRENCY_ID,
             value=self.price
         )

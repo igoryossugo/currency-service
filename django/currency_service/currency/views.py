@@ -9,7 +9,7 @@ from currency_service.currency.serializers import (
 )
 
 
-class Converter(APIView):
+class Convert(APIView):
 
     def post(self, request, currency_id, target_currency_id):
         serializer = CurrencyValueSerializer(data=request.data)
@@ -19,7 +19,7 @@ class Converter(APIView):
             id=currency_id.upper(),
             value=serializer.validated_data['value']
         )
-        currency.converter(id=target_currency_id.upper())
+        currency.convert(id=target_currency_id.upper())
 
         return Response(
             CurrencySerializer(instance=currency).data,
@@ -27,13 +27,13 @@ class Converter(APIView):
         )
 
 
-class ConverterList(APIView):
+class ConvertList(APIView):
 
     def post(self, request, currency_id):
         serializer = CurrencyValueSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        currencies = Currency.converter_list(
+        currencies = Currency.convert_list(
             id=currency_id.upper(),
             value=serializer.validated_data['value']
         )

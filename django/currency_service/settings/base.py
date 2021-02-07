@@ -134,7 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-DEFAULT_CONVERTER_CURRENCY_IDS = ['USD', 'EUR', 'CAD']
+DEFAULT_CONVERT_CURRENCY_IDS = ['USD', 'EUR', 'CAD']
 
 POOL_OF_RAMOS = {
     'catalog': [
