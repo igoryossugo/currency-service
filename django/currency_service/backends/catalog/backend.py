@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from currency_service.backends.catalog.models import Product
+from currency_service.product.models import Product
 
 
 class CatalogBackend:

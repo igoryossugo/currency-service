@@ -63,7 +63,8 @@ WSGI_APPLICATION = 'currency_service.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'currency_service.drf.views.custom_exception_handler',
 }
 
 CACHES = {
@@ -133,7 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-DEFAULT_CURRENCY_IDS = ['BRL', 'USD', 'EUR', 'CAD']
+DEFAULT_CONVERTER_CURRENCY_IDS = ['USD', 'EUR', 'CAD']
 
 POOL_OF_RAMOS = {
     'catalog': [

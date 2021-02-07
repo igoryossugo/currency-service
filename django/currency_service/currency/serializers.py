@@ -7,3 +7,7 @@ class CurrencySerializer(serializers.Serializer):
 
     def validate_id(self, value):
         return value.upper()
+
+
+class CurrencyValueSerializer(serializers.Serializer):
+    value = serializers.DecimalField(max_digits=10, decimal_places=2)
