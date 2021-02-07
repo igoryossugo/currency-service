@@ -1,6 +1,8 @@
 from decimal import Decimal
 from unittest import mock
 
+from django.conf import settings
+
 from currency_service.backends.cotation.models import Cotation
 from currency_service.currency.enums import CurrencyID
 from currency_service.currency.models import Currency
@@ -8,18 +10,18 @@ from currency_service.currency.models import Currency
 
 class TestCurrency:
 
-    def test_converter_should_convert_value_and_id(self):
+    def test_convert_should_convert_value_and_id(self):
         initial_value = Decimal('100.00')
         currency = Currency(
             id=CurrencyID.BRL.value,
             value=initial_value
         )
-        currency.converter(id=CurrencyID.USD.value)
+        currency.convert(id=CurrencyID.USD.value)
 
         assert currency.id == CurrencyID.USD.value
         assert currency.value != initial_value
 
-    def test_converter_should_call_cotation_backend(self):
+    def test_convert_should_call_cotation_backend(self):
         with mock.patch(
             'currency_service.extensions.fake.backends.cotation.'
             'FakeCotationBackend.get',
@@ -33,14 +35,14 @@ class TestCurrency:
                 id=CurrencyID.BRL.value,
                 value=Decimal('100.00')
             )
-            currency.converter(id=CurrencyID.USD.value)
+            currency.convert(id=CurrencyID.USD.value)
 
         mocked_backend.assert_called_with(
             target_currency=CurrencyID.USD.value,
             source_currency=CurrencyID.BRL.value
         )
 
-    def test_converter_should_not_call_cotation_backend_with_same_id(self):
+    def test_convert_should_not_call_cotation_backend_with_same_id(self):
         with mock.patch(
             'currency_service.extensions.fake.backends.cotation.'
             'FakeCotationBackend.get',
@@ -49,6 +51,12 @@ class TestCurrency:
                 id=CurrencyID.USD.value,
                 value=Decimal('100.00')
             )
-            currency.converter(id=CurrencyID.USD.value)
+            currency.convert(id=CurrencyID.USD.value)
 
         assert not mocked_backend.called
+
+    def test_list_should_return_list_of_currency_by_registered_config(self):
+        currencies = Currency.convert_list(id='BRL', value=Decimal('10.00'))
+        for currency in currencies:
+            assert isinstance(currency, Currency)
+            assert currency.id in settings.REGISTERED_CURRENCY_IDS

@@ -13,7 +13,7 @@ class Currency(BaseModel):
     id: CurrencyID
     value: Decimal
 
-    def converter(self, id: CurrencyID):
+    def convert(self, id: CurrencyID):
         if id == self.id:
             return
 
@@ -26,11 +26,11 @@ class Currency(BaseModel):
         self.value = self.value / cotation.value
 
     @classmethod
-    def converter_list(cls, id: CurrencyID, value: Decimal):
+    def convert_list(cls, id: CurrencyID, value: Decimal):
         currencies = []
-        for currency_id in settings.DEFAULT_CONVERTER_CURRENCY_IDS:
+        for currency_id in settings.REGISTERED_CURRENCY_IDS:
             currency = cls(id=id, value=value)
-            currency.converter(id=currency_id)
+            currency.convert(id=currency_id)
             currencies.append(currency)
 
         return currencies
