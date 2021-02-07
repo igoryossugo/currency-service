@@ -6,9 +6,7 @@ import pytest
 from currency_service.extensions.bacen.constants import BACEN_CURRENCY_IDS
 from currency_service.extensions.bacen.exceptions import InvalidBacenCurrencyID
 from currency_service.extensions.bacen.helpers import (
-    build_cotation_by_bacen_response,
-    get_bacen_currency_id
-)
+    build_cotation_by_bacen_response, get_bacen_currency_id)
 
 
 class TestGetBacenCurrencyID:

@@ -1,0 +1,15 @@
+dist: xenial
+language: python
+python:
+  - "3.9"
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+
+install:
+  - make requirements-dev
+
+script:
+  - make check
+  - make test

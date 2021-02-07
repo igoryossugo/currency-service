@@ -3,10 +3,8 @@ from abc import abstractmethod
 from django.conf import settings
 from django.core.cache import caches
 
-from currency_service.currency.constants import (
-    DEFAULT_LOCAL_CURRENCY_ID
-)
 from currency_service.backends.cotation.models import Cotation
+from currency_service.currency.constants import DEFAULT_LOCAL_CURRENCY_ID
 from currency_service.currency.enums import CurrencyID
 
 cache = caches['cotation']

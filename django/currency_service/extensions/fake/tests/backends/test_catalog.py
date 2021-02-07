@@ -1,9 +1,8 @@
 import pytest
 
-from currency_service.product.models import Product
 from currency_service.extensions.fake.backends.catalog import (
-    FakeCatalogBackend
-)
+    FakeCatalogBackend)
+from currency_service.product.models import Product
 
 
 class TestFakeCatalogBackend:

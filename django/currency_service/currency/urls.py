@@ -4,7 +4,7 @@ from currency_service.currency import views
 
 urlpatterns = [
     url(
-        r'^(?P<currency_id>[\w_-]+)/$',
+        r'^(?P<currency_id>[\w_-]+)/convert/$',
         views.ConvertList.as_view(),
         name='currency_convert_list'
     ),

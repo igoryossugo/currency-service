@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from currency_service.settings import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
