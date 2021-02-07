@@ -13,7 +13,7 @@ class TestFakeCatalogBackend:
         return FakeCatalogBackend()
 
     def test_get_should_return_an_product_object(self, backend):
-        sku = 'abc12345'
+        sku = 'jkqrm3214'
         seller = 'centauro'
         product = backend.get_product(sku=sku, seller=seller)
         assert isinstance(product, Product)
