@@ -11,7 +11,7 @@ test:
 
 check:
 	@flake8 django/
-	@isort --check
+	@isort --check django/
 
 migrate-dev:
 	@python $(MANAGE_PY) migrate --settings=$(DEV_SETTINGS)

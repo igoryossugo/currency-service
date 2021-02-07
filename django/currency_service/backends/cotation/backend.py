@@ -35,5 +35,5 @@ class CotationBackend:
         self,
         target_currency: CurrencyID,
         source_currency: CurrencyID = DEFAULT_LOCAL_CURRENCY_ID,
-    ) -> Cotation:  # pragma: no cover
+    ) -> Cotation:
         pass

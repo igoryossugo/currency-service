@@ -11,8 +11,5 @@ install:
   - pip install -r requirements-dev.txt
 
 script:
-  - make check coverage
-
-after_success:
-  - pip install codecov pyOpenSSL
-  - codecov
+  - make check
+  - make test
